@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Our model inverts erased images into GAN's latent space for realistic inpaintings and editings.">
+  <meta name="keywords" content="GAN Inversion, Diverse, Inpainting, Editing">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MixGAN: Dual Path StyleGAN Fusion for Diverse
+    and Editable Inpainting</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.ico">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  
+</head>
+<body>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">MixGAN: Dual Path StyleGAN Fusion for Diverse
+            and Editable Inpainting</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a >Mustafa Utku Aydogdu</a>*,</span>
+            <span class="author-block">
+              <a >Ahmet Burak Yıldırım</a>,</span>
+            <span class="author-block">
+              <a>Yiğit Ekin</a>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.cs.bilkent.edu.tr/~adundar/">Aysegul Dundar</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Bilkent University</span>
+          </div>
+          <!-- <p class="is-size-7 is-text-centered">
+            *Joint first authors, contributed equally.
+            <br><br>
+          </p>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><b>ICCV 2023</b></span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2307.15033"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img class="img-svg" src="./static/images/teaser-cropped.svg" alt="MixGAN Teaser">
+      <h2 class="subtitle has-text-centered">
+        When part of a face is removed, MAT shows limited diversity, while DivInv offers varied but occasionally misaligned results. MixGAN achieves high diversity, precise inpainting, and control over edits, leveraging StyleGAN’s latent space to add attributes like eyeglasses or smiles to corrupted images.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+
+          <p>
+            This study introduces a novel framework for image inpainting by leveraging Generative Adversarial Networks (GANs), specifically StyleGAN's feature space. We tackle the challenge of seamlessly integrating erased pixels into the surrounding image context while achieving diversity and preserving editability by utilizing StyleGAN's disentangled latent space.
+             Our approach involves two parallel generations of features: one from the encoded image and the other from sampled latent space for diversity. These parallel generations complement each other and are aware of each other's output through dual feedback mechanisms for alignment. Our approach achieves diverse inpainting and editing within a unified framework. 
+             Through experiments and comparisons with existing methods, we demonstrate the effectiveness of our approach in achieving high-quality inpaintings and significant improvements on diverse generations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+ 
+            <img class="img-svg" src="./static/images/First-stage-revised.svg" alt="MixGAN Architecture">
+            <p>
+              Our approach involves passing both <i>W<sup>enc</sup></i> and <i>W<sup>rand</sup></i> through StyleGAN simultaneously to initiate feature generation.
+            </p>
+            
+            
+            <p>
+              Mixing networks are employed to integrate features from both paths, with their outputs replaced by generated features from StyleGAN at each layer to ensure awareness on both pathways.
+              This allows for communication between the two pathways, enabling features generated by the second pathway to enhance the first pathway and introduce diversity.
+            </p>
+            <p>
+              Additionally, the second pathway must remain informed of the progress of the first pathway, ensuring alignment with established features while maintaining diversity. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            We compare our inpainting results with the state-of-the-art models below and show the diverse inpainting and editing results of our model on the FFHQ dataset. 
+          </p>
+          <img class="img-svg-small center-img" src="./static/images/comparisons-cropped.svg" alt="FFHQ SOTA Comparison">
+          <hr>
+          <p> Our approach stands out as the sole method capable of achieving remarkable diversity while seamlessly filling in missing areas simultaneously.</p>
+          <img class="img-svg-small center-img" src="./static/images/diverse-cropped.svg" alt="FFHQ Diverse Inpainting Results">
+          <hr>
+          <p> Editing results of our method. Second row shows the randomly sampled   results and the third row shows after adding InterfaceGAN (I) and StyleClip (S) directions for different attributes. </p>
+          <img class="img-svg-small center-img" src="./static/images/editss-cropped.svg" alt="FFHQ Edit Results">
+          <hr>
+          <p>   Inpainting results on AFHQ, Cars and BreCaHad. </p>
+          <img class="img-svg-small center-img" src="./static/images/dogcats-cropped.svg" alt="AFHQ and BreCaHad Inpainting Results">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Further Comparisons with Diffusion Models</h2>
+        <div class="content has-text-justified">
+          <p>
+            Qualitative results of our and diffusion based RePaint and CoPaint models. </p>
+          <img class="img-svg-small center-img" src="./static/images/copaint-cropped.svg" alt="FFHQ CoPaint Comparison">
+          <hr>
+          <p> We compare our approach with recent state-of-the-art diffusion-based models. We inpaint and subsequently edit images using our method and others. Notably, we refrain from applying masking operations to other methods to blend original unmasked pixels with the generated ones. This omission is deliberate as diffusion-based inpainting methods alter all pixels, often lacking fidelity to the input and struggling with edits.</p>
+          <img class="img-svg-small center-img" src="./static/images/difeditcomp-cropped.svg" alt="FFHQ Diffusion Edit">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Why do we need a unified framework for inpainting and editing tasks?</h2>
+        <div class="content has-text-justified">
+          <p>
+            If we opt for utilizing state-of-the-art inpainting and editing techniques instead of our integrated approach achieving both tasks, it is important to note that the preservation of unerased pixels is not assured by typical editing methods. Consequently, reintroducing the original unerased pixels into the output may lead to boundary artifacts. </p>
+          <img class="img-svg-small center-img" src="./static/images/marketing-cropped.svg" alt="Marketing">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p style="text-align:center">
+            This website is adapted from the following <a
+              href="https://github.com/nerfies/nerfies.github.io">template</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
